@@ -20,10 +20,10 @@ type Configuration struct {
 
 func GetConfiguration() Configuration {
 	return Configuration{
-		DatabaseName:        getOrDefault("DB_NAME", "todo-db"),
+		DatabaseName:        getOrDefault("DB_NAME", "prj_db_nupp"),
 		DatabaseHost:        getOrDefault("DB_HOST", "127.0.0.1:5432"),
-		DatabaseUser:        getOrDefault("DB_USER", "postgres"),
-		DatabasePassword:    getOrDefault("DB_PASSWORD", "postgres"),
+		DatabaseUser:        getOrDefault("DB_USER", "admin"),
+		DatabasePassword:    getOrDefault("DB_PASSWORD", "admin"),
 		MigrateToVersion:    getOrDefault("MIGRATE", "latest"),
 		MigrationLocation:   getOrDefault("MIGRATION_LOCATION", "internal/infra/database/migrations"),
 		FileStorageLocation: getOrDefault("FILES_LOCATION", "file_storage"),
