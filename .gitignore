@@ -109,6 +109,73 @@ docker-data/
 /testdata/*.tmp
 
 # ------------------------------------------------------------------------------
-# Misc
+# Project-specific
 # ------------------------------------------------------------------------------
+# Built server binary
+/server
+enterprise-system
+enterprise_system
+
+# Migration lock files
+.migrate
+
+# Generated API documentation
+docs/generated/
+swagger-ui/
+
+# Compiled Go programs
+main
+
+# Secrets and credentials
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Database backups
+*.sql.gz
+*.sql.bak
+*.dump
+
+# IDE temporary files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Postman collections
+*.postman_collection.json
+*.postman_environment.json
+collections/
+
+# Profiling and benchmarking
+*.pprof
+*.prof
+bench.txt
+benchstat.txt
+
+# Client-generated files (if using code generation)
+client/
+gen/client/
+
+# Node modules (if any frontend build tools are used)
+node_modules/
+
+# Private documentation
+docs/private/
+
+# Build artifacts from different Go versions
+server-*-*
+
+# IDE specific
+*.iml
+*.iws
+*.ipr
+
+# Cache directories
+.cache/
+.eslintcache
+
+# Misc
 *.local

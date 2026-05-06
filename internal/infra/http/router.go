@@ -3,15 +3,16 @@ package http
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/BohdanBoriak/boilerplate-go-back/config"
 	"github.com/BohdanBoriak/boilerplate-go-back/config/container"
 	"github.com/BohdanBoriak/boilerplate-go-back/internal/infra/http/controllers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
-	"net/http"
-	"os"
-	"path/filepath"
-	"strings"
 
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -49,6 +50,7 @@ func Router(cont container.Container) http.Handler {
 				apiRouter.Use(cont.AuthMw)
 
 				UserRouter(apiRouter, cont.UserController)
+				OrganizationRouter(apiRouter, cont.OrganizationController)
 				apiRouter.Handle("/*", NotFoundJSON())
 			})
 		})
@@ -96,6 +98,31 @@ func UserRouter(r chi.Router, uc controllers.UserController) {
 		apiRouter.Delete(
 			"/",
 			uc.Delete(),
+		)
+	})
+}
+
+func OrganizationRouter(r chi.Router, oc controllers.OrganizationController) {
+	r.Route("/organizations", func(apiRouter chi.Router) {
+		apiRouter.Post(
+			"/",
+			oc.Create(),
+		)
+		apiRouter.Get(
+			"/",
+			oc.GetAll(),
+		)
+		apiRouter.Get(
+			"/{id}",
+			oc.Get(),
+		)
+		apiRouter.Put(
+			"/{id}",
+			oc.Update(),
+		)
+		apiRouter.Delete(
+			"/{id}",
+			oc.Delete(),
 		)
 	})
 }
